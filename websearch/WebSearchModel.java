@@ -36,7 +36,9 @@ public class WebSearchModel {
     }
     private void notifyAllObservers(String line) {
         for (QueryObserverRegistration registration : observers) {
-            registration.observer.onQuery(line);
+            if (registration.filter.matches(line)) {
+                registration.observer.onQuery(line);
+            }
         }
     }
 
