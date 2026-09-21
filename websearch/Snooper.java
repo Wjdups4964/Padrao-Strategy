@@ -7,10 +7,15 @@ public class Snooper {
     public Snooper(WebSearchModel model) {
         this.model = model;
 
-        model.addQueryObserver( new WebSearchModel.QueryObserver() {
+        model.addQueryObserver(new WebSearchModel.QueryObserver() {
             @Override
             public void onQuery(String query) {
                 System.out.println("Query: " + query);
+            }
+        }, new QueryFilter() {
+            @Override
+            public boolean matches(String query) {
+                return true;
             }
         });
     }
