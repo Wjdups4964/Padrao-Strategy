@@ -88,27 +88,7 @@ Isso permite trocar ou adicionar novas regras de filtragem sem alterar a lógica
 
 ## Documentação do uso de IA
 
-### Etapa 1 - Entendimento do código inicial
-
-**Prompt utilizado:**
-
-```text
-Me ajude a entender o código inicial da questão websearch e explique como aplicar Strategy sem me dar a solução inteira de uma vez.
-```
-
-**O que a IA sugeriu:**
-
-A IA explicou que o `WebSearchModel` era responsável por ler o arquivo de consultas e notificar os observadores, enquanto o `Snooper` recebia todas as consultas. Também explicou que o problema era a ausência de um filtro entre a leitura da consulta e a notificação do observador.
-
-**Ajuste feito:**
-
-Nesta etapa, nenhum código foi alterado. O código original foi apenas adicionado ao repositório para registrar o ponto de partida da solução.
-
-**Por que esse ajuste foi adequado:**
-
-Registrar o código inicial permite que o histórico de commits mostre a evolução da solução desde o estado original do problema.
-
-### Etapa 2 - Criação da estratégia de filtro
+### Etapa 1 - Criação da estratégia de filtro
 
 **Prompt utilizado:**
 
@@ -128,7 +108,7 @@ Foi criada a interface `QueryFilter`, com o método `matches(String query)`.
 
 A interface separa a regra de filtragem do modelo de busca, permitindo que diferentes filtros sejam usados sem alterar o `WebSearchModel`.
 
-### Etapa 3 - Registro de observadores com filtro
+### Etapa 2 - Registro de observadores com filtro
 
 **Prompt utilizado:**
 
@@ -148,7 +128,7 @@ O método `addQueryObserver` passou a receber um `QueryObserver` e um `QueryFilt
 
 Essa mudança permite que cada observador tenha sua própria estratégia de filtragem, que será usada posteriormente para decidir se ele deve ou não ser notificado.
 
-### Etapa 4 - Uso do filtro antes da notificação
+### Etapa 3 - Uso do filtro antes da notificação
 
 **Prompt utilizado:**
 
@@ -168,7 +148,7 @@ O método `notifyAllObservers` foi alterado para notificar um observador apenas 
 
 Com isso, o `WebSearchModel` continua sem conhecer os critérios concretos de filtragem, mas passa a respeitar a estratégia associada a cada observador.
 
-### Etapa 5 - Configuração dos filtros reais
+### Etapa 4 - Configuração dos filtros reais
 
 **Prompt utilizado:**
 
@@ -188,7 +168,7 @@ O filtro provisório que aceitava todas as consultas foi substituído pelos filt
 
 Essa alteração faz a solução atender diretamente ao enunciado, imprimindo `Oh Yes!` para consultas com `friend` e `So long` para consultas longas.
 
-### Etapa 6 - Ajustes finais de execução
+### Etapa 5 - Ajustes finais de execução
 
 **Prompt utilizado:**
 
@@ -208,7 +188,7 @@ Foi conferido o caminho do arquivo de entrada e, se necessário, ajustada a saí
 
 Esses ajustes garantem que o programa execute corretamente no ambiente local e que a saída fique mais legível, sem alterar a lógica do padrão Strategy.
 
-### Etapa 7 - Documentação final
+### Etapa 6 - Documentação final
 
 **Prompt utilizado:**
 
@@ -233,7 +213,6 @@ A documentação ajuda a demonstrar como a solução evoluiu e facilita a avalia
 A solução foi organizada em commits curtos, cada um representando uma etapa da implementação:
 
 ```text
-Adiciona codigo inicial do websearch
 Cria estrategia de filtro de consultas
 Registra observadores com estrategia de filtro
 Filtra consultas antes de notificar observadores
