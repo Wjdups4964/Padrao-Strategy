@@ -7,7 +7,7 @@ public class Snooper {
         model.addQueryObserver(new WebSearchModel.QueryObserver() {
             @Override
             public void onQuery(String query) {
-                System.out.println("Oh Yes! " + query);
+                System.out.println("Oh Yes! " + query.trim());
             }
         }, new QueryFilter() {
             @Override
@@ -19,7 +19,7 @@ public class Snooper {
         model.addQueryObserver(new WebSearchModel.QueryObserver() {
             @Override
             public void onQuery(String query) {
-                System.out.println("So long " + query);
+                System.out.println("So long " + query.trim());
             }
         }, new QueryFilter() {
             @Override
