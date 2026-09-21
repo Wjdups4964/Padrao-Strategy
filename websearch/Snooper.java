@@ -1,6 +1,3 @@
-/**
- * Watches the search queries
- */
 public class Snooper {
     private final WebSearchModel model;
 
@@ -10,12 +7,24 @@ public class Snooper {
         model.addQueryObserver(new WebSearchModel.QueryObserver() {
             @Override
             public void onQuery(String query) {
-                System.out.println("Query: " + query);
+                System.out.println("Oh Yes! " + query);
             }
         }, new QueryFilter() {
             @Override
             public boolean matches(String query) {
-                return true;
+                return query.toLowerCase().contains("friend");
+            }
+        });
+
+        model.addQueryObserver(new WebSearchModel.QueryObserver() {
+            @Override
+            public void onQuery(String query) {
+                System.out.println("So long " + query);
+            }
+        }, new QueryFilter() {
+            @Override
+            public boolean matches(String query) {
+                return query.length() > 60;
             }
         });
     }
